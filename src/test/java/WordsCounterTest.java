@@ -15,7 +15,7 @@ public class WordsCounterTest {
         @Test
         public void standartTest() {
             counter.count("Hello");
-           String actual = counter.getCounts("Hello");
+           String actual = counter.count("Hello");
             assertEquals(expectedStandart, actual);
         }
 
