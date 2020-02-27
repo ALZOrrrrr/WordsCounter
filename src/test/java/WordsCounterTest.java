@@ -1,3 +1,4 @@
+import gitlab.foxminded.task5.Formatter;
 import gitlab.foxminded.task5.WordsCounter;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -6,16 +7,16 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class WordsCounterTest {
 
-        WordsCounter counter = new WordsCounter();
-        private final String expectedStandart = "H 1\n" +
-                "e 1\n" +
-                "l 2\n" +
-                "o 1\n";
+        private WordsCounter counter = new WordsCounter();
+        private Formatter formatter = new Formatter();
+        private final String expectedStandart = "a 1\n" +
+                "c 2\n" +
+                "d 1\n";
 
         @Test
         public void standartTest() {
-            counter.count("Hello");
-           String actual = counter.count("Hello");
+            counter.count("acdc");
+           String actual = formatter.format(counter.count("acdc"));
             assertEquals(expectedStandart, actual);
         }
 

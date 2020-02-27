@@ -1,29 +1,16 @@
 package gitlab.foxminded.task5;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+
+import java.util.Map;
 
 public class Formatter {
 
-    public String getCounts(String str, HashMap<String, HashMap<Character, Integer>> mapOfMaps) {
+    private String SPACE = " ";
+    public String format(Map<Character, Integer> myMap) {
         StringBuilder strb = new StringBuilder();
 
-        if (mapOfMaps.containsKey(str)) {
-
-            HashMap map = mapOfMaps.get(str);
-            char[] charArray = str.toCharArray();
-            List<Character> keysList = new ArrayList<>();
-            for (char a : charArray) {
-                if (!keysList.contains(a)) {
-                    keysList.add(a);
-                }
-            }
-            for (char a : keysList) {
-                strb.append(a + " " + map.get(a) + "\n");
-            }
-        } else {
-            System.out.println("no such String");
+        for (char key : myMap.keySet()) {
+            strb.append(key + SPACE + myMap.get(key) + "\n");
         }
         return strb.toString();
     }

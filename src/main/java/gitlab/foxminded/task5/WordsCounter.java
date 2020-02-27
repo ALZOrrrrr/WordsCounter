@@ -1,13 +1,10 @@
 package gitlab.foxminded.task5;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class WordsCounter {
 
-    private HashMap<String, HashMap<Character, Integer>> mapOfMaps = new HashMap<>();
-    private Formatter formatter = new Formatter();
+    private Map<String, Map<Character, Integer>> cache = new HashMap<>();
 
     private void validate(String str) {
         if (str == null) {
@@ -15,24 +12,26 @@ public class WordsCounter {
         }
     }
 
-    public String count(String input) {
+    public Map count(String input) {
 
-        String output;
 
-        if (mapOfMaps.containsKey(input)) {
-            output = formatter.getCounts(input, mapOfMaps);
-            return output;
+        validate(input);
+
+        if (cache.containsKey(input)) {
+
+            return cache.get(input);
         } else {
-            validate(input);
+
 
             char[] myCharArray = input.toCharArray();
+
             List<Character> chars = new ArrayList<>();
 
             for (char a : myCharArray) {
                 chars.add(a);
             }
 
-            HashMap<Character, Integer> myMap = new HashMap<>();
+            Map<Character, Integer> returnMap = new HashMap<>();
 
             for (char a : myCharArray) {
                 int count = 0;
@@ -44,13 +43,12 @@ public class WordsCounter {
                     }
                 }
                 if (count != 0) {
-                    myMap.put(a, count);
+                    returnMap.put(a, count);
                 }
 
             }
-            mapOfMaps.put(input, myMap);
-            output = formatter.getCounts(input, mapOfMaps);
-            return output;
+            cache.put(input, returnMap);
+            return returnMap;
         }
     }
 }
