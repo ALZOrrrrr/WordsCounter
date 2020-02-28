@@ -23,15 +23,12 @@ public class WordsCounter {
             return cache.get(input);
         } else {
 
-
-            char[] myCharArray = input.toCharArray();
-
             List<Character> chars = input.chars()
                     .mapToObj(c -> (char) c)
                     .collect(Collectors.toList());
             Map<Character, Integer> returnMap = new HashMap<>();
 
-            for (char a : myCharArray) {
+            for (char a : chars) {
                 int count = 0;
                 for (int i = 0; i < chars.size(); i++) {
                     if (chars.get(i) == null) {
