@@ -1,6 +1,7 @@
 package gitlab.foxminded.task5;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class WordsCounter {
 
@@ -25,12 +26,9 @@ public class WordsCounter {
 
             char[] myCharArray = input.toCharArray();
 
-            List<Character> chars = new ArrayList<>();
-
-            for (char a : myCharArray) {
-                chars.add(a);
-            }
-
+            List<Character> chars = input.chars()
+                    .mapToObj(c -> (char) c)
+                    .collect(Collectors.toList());
             Map<Character, Integer> returnMap = new HashMap<>();
 
             for (char a : myCharArray) {
