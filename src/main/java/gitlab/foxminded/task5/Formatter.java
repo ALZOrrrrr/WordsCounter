@@ -6,12 +6,12 @@ import java.util.Map;
 public class Formatter {
 
     private String SPACE = " ";
-    public String format(Map<Character, Integer> myMap) {
-        StringBuilder strb = new StringBuilder();
 
+    public String symbolsCount(Map<Character, Integer> myMap) {
+        StringBuilder output = new StringBuilder();
         for (char key : myMap.keySet()) {
-            strb.append(key + SPACE + myMap.get(key) + "\n");
+            output.append(key + SPACE + myMap.get(key) + "\n");
         }
-        return strb.toString();
+        return output.toString();
     }
 }

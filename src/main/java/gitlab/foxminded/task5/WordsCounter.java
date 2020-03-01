@@ -4,7 +4,6 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class WordsCounter {
-
     private Map<String, Map<Character, Integer>> cache = new HashMap<>();
 
     private void validate(String str) {
@@ -14,21 +13,17 @@ public class WordsCounter {
     }
 
     public Map count(String input) {
-
-
         validate(input);
+        char[] myCharArray = input.toCharArray();
 
         if (cache.containsKey(input)) {
-
             return cache.get(input);
         } else {
-
             List<Character> chars = input.chars()
                     .mapToObj(c -> (char) c)
                     .collect(Collectors.toList());
             Map<Character, Integer> returnMap = new HashMap<>();
-
-            for (char a : chars) {
+            for (char a : myCharArray) {
                 int count = 0;
                 for (int i = 0; i < chars.size(); i++) {
                     if (chars.get(i) == null) {
@@ -40,7 +35,6 @@ public class WordsCounter {
                 if (count != 0) {
                     returnMap.put(a, count);
                 }
-
             }
             cache.put(input, returnMap);
             return returnMap;
