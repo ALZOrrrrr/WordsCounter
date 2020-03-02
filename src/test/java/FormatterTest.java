@@ -22,14 +22,14 @@ public class FormatterTest {
                 new AbstractMap.SimpleEntry<>('c', 2),
                 new AbstractMap.SimpleEntry<>('d', 1))
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue)));
-        String actual = formatter.symbolsCount(counterSpy.count("acdc"));
+        String actual = formatter.format(counterSpy.count("acdc"));
         assertEquals(expectedStandart, actual);
     }
 
     @Test
     public void shouldThrowIllegalArgumentExceptionWhenNullsPassed() {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            formatter.symbolsCount(null);
+            formatter.format(null);
         });
         final String expectedMessage = "should be String parameter";
         final String actualMessage = exception.getMessage();

@@ -7,10 +7,10 @@ public class Formatter {
 
     private String SPACE = " ";
 
-    public String symbolsCount(Map<Character, Integer> myMap) {
+    public String format(Map<Character, Integer> symbolsCount) {
         StringBuilder output = new StringBuilder();
-        for (char key : myMap.keySet()) {
-            output.append(key + SPACE + myMap.get(key) + "\n");
+        for (char key : symbolsCount.keySet()) {
+            output.append(key + SPACE + symbolsCount.get(key) + "\n");
         }
         return output.toString();
     }

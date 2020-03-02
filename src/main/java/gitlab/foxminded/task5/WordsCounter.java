@@ -12,9 +12,9 @@ public class WordsCounter {
         }
     }
 
-    public Map count(String input) {
+    public Map<Character, Integer> count(String input) {
         validate(input);
-        char[] myCharArray = input.toCharArray();
+        char[] charsArray = input.toCharArray();
 
         if (cache.containsKey(input)) {
             return cache.get(input);
@@ -23,7 +23,7 @@ public class WordsCounter {
                     .mapToObj(c -> (char) c)
                     .collect(Collectors.toList());
             Map<Character, Integer> returnMap = new HashMap<>();
-            for (char a : myCharArray) {
+            for (char a : charsArray) {
                 int count = 0;
                 for (int i = 0; i < chars.size(); i++) {
                     if (chars.get(i) == null) {
